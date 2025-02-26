@@ -1,0 +1,82 @@
+.product-card {
+    width: 200px;
+    height: 15px;
+}
+.carousel {
+    max-height: 500px; /* Adjust to half size */
+    overflow: hidden;
+}
+.carousel-img {
+    height: 500px; /* Match carousel height */
+    object-fit: cover; /* Crop images instead of stretching */
+}
+
+.nav-link, .dropdown-item {
+    color: white !important;
+}
+
+
+/*Dark*/
+
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.card {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #333;
+}
+
+.btn-primary {
+    background-color: #6200ea;
+    border-color: #6200ea;
+}
+
+.btn-primary:hover {
+    background-color: #3700b3;
+    border-color: #3700b3;
+}
+
+.navbar, .dropdown-menu {
+    background-color: #1e1e1e !important;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+}
+
+
+/*cart*/
+.bordered {
+    border: 1px solid #dee2e6; /* Borde similar al de Bootstrap */
+    border-radius: 0.25rem; /* Bordes redondeados */
+    padding: 1rem; /* Espaciado interno */
+    margin-bottom: 1rem; /* Espacio entre productos */
+}
+.product-img {
+    width: 200px; /* Tamaño más grande */
+    height: auto; 
+}
+
+
+/*Login*/
+.modal-content {
+    background-color: #343a40 !important;
+}
+.btn-secondary, .btn-primary {
+    background-color: #5a6268;
+    border: none;
+}
+.btn-secondary:hover, .btn-primary:hover {
+    background-color: #6c757d;
+}
+.input-group-text {
+    background-color: #495057;
+}
+.form-control {
+    background-color: #495057;
+    color: white;
+}
