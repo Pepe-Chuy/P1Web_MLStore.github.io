@@ -80,3 +80,8 @@ body {
     background-color: #495057;
     color: white;
 }
+
+.product-image {
+    width: 100px; /* Set a width that fits your design */
+    height: auto; /* Maintain aspect ratio */
+}
