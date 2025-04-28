@@ -1,0 +1,130 @@
+pepechuy@pepechuy-HVY-WXX9:~$ curl -X POST http://localhost:3000/api/users/login -H "Content-Type: application/json" -d '{"email":"admin@mlshop.com","password":"password123"}' | json_pp
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   389  100   336  100    53   2235    352 --:--:-- --:--:-- --:--:--  2593
+{
+   "message" : "Login successful",
+   "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBmMWZiMWUwMGUxODU1YzM3Y2EzYzUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDU4MjE3OTksImV4cCI6MTc0NTkwODE5OX0.XnTuNUpnkWhclo-wOhJVm9x0QNiOAl26q39ZnTJZj7A",
+   "user" : {
+      "email" : "admin@mlshop.com",
+      "id" : "680f1fb1e00e1855c37ca3c5",
+      "name" : "Admin1",
+      "role" : "admin"
+   }
+}
+pepechuy@pepechuy-HVY-WXX9:~$ curl -X GET http://localhost:3000/api/products | json_pp
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1986  100  1986    0     0   297k      0 --:--:-- --:--:-- --:--:--  323k
+[
+   {
+      "__v" : 0,
+      "_id" : "680f1fb1e00e1855c37ca3bf",
+      "category" : "Algorithms",
+      "createdAt" : "2025-04-28T06:26:57.089Z",
+      "description" : "Comprehensive course on Support Vector Machines: theory and implementation.",
+      "image" : "https://media.datacamp.com/legacy/image/upload/f_auto,q_auto:best/v1526288453/index3_souoaz.png",
+      "name" : "SVM Masterclass",
+      "price" : 299,
+      "stock" : 100,
+      "updatedAt" : "2025-04-28T06:26:57.089Z"
+   },
+   {
+      "__v" : 0,
+      "_id" : "680f1fb1e00e1855c37ca3c0",
+      "category" : "Algorithms",
+      "createdAt" : "2025-04-28T06:26:57.089Z",
+      "description" : "Python library with optimized KNN algorithms for various applications.",
+      "image" : "https://db0dce98.rocketcdn.me/es/files/2020/11/Illu-2-KNN-1024x492.jpg",
+      "name" : "K-Nearest Neighbors Toolkit",
+      "price" : 99.5,
+      "stock" : 150,
+      "updatedAt" : "2025-04-28T06:26:57.089Z"
+   },
+   {
+      "__v" : 0,
+      "_id" : "680f1fb1e00e1855c37ca3c1",
+      "category" : "Algorithms",
+      "createdAt" : "2025-04-28T06:26:57.089Z",
+      "description" : "Essential algorithms for neural networks: perceptrons, backpropagation, and more.",
+      "image" : "https://www.profesionalonline.com/blog/wp-content/uploads/2021/11/que-es-machine-learning-header.jpg",
+      "name" : "Deep Learning Foundation Bundle",
+      "price" : 499,
+      "stock" : 75,
+      "updatedAt" : "2025-04-28T06:26:57.089Z"
+   },
+   {
+      "__v" : 0,
+      "_id" : "680f1fb1e00e1855c37ca3c2",
+      "category" : "Algorithms",
+      "createdAt" : "2025-04-28T06:26:57.090Z",
+      "description" : "Advanced decision tree and random forest algorithms for classification and regression.",
+      "image" : "https://miro.medium.com/v2/resize:fit:1200/1*kwCh2-U02xf-EWaTt3Xr4w.png",
+      "name" : "Decision Tree Pro",
+      "price" : 149.99,
+      "stock" : 120,
+      "updatedAt" : "2025-04-28T06:26:57.090Z"
+   },
+   {
+      "__v" : 0,
+      "_id" : "680f1fb1e00e1855c37ca3c3",
+      "category" : "Algorithms",
+      "createdAt" : "2025-04-28T06:26:57.090Z",
+      "description" : "Implementation of popular clustering algorithms: K-Means, DBSCAN, Hierarchical Clustering.",
+      "image" : "https://developers.google.com/static/machine-learning/clustering/images/clustering_example.png",
+      "name" : "Clustering Essentials Pack",
+      "price" : 79,
+      "stock" : 200,
+      "updatedAt" : "2025-04-28T06:26:57.090Z"
+   }
+]
+pepechuy@pepechuy-HVY-WXX9:~$                                                         
+curl -X POST http://localhost:3000/api/products -H "Content-Type: application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBmMWZiMWUwMGUxODU1YzM3Y2EzYzUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDU4MjE3OTksImV4cCI6MTc0NTkwODE5OX0.XnTuNUpnkWhclo-wOhJVm9x0QNiOAl26q39ZnTJZj7A" -d '{"name":"Test Product","description":"Test Description","price":99.99,"stock":10,"category":"Test","image":"https://via.placeholder.com/150"}' | json_pp
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   454  100   313  100   141   8582   3866 --:--:-- --:--:-- --:--:-- 12611
+{
+   "message" : "Product created successfully",
+   "product" : {
+      "__v" : 0,
+      "_id" : "680f217d4b305922683667d8",
+      "category" : "Test",
+      "createdAt" : "2025-04-28T06:34:37.907Z",
+      "description" : "Test Description",
+      "image" : "https://via.placeholder.com/150",
+      "name" : "Test Product",
+      "price" : 99.99,
+      "stock" : 10,
+      "updatedAt" : "2025-04-28T06:34:37.907Z"
+   }
+}
+pepechuy@pepechuy-HVY-WXX9:~$ curl -X POST http://localhost:3000/api/users/login -H "Content-Type: application/json" -d '{"email":"user@mlshop.com","password":"password123"}' | json_pp
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   388  100   336  100    52   2600    402 --:--:-- --:--:-- --:--:--  3007
+{
+   "message" : "Login successful",
+   "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBmMWZiMWUwMGUxODU1YzM3Y2EzYzciLCJyb2xlIjoiY2xpZW50IiwiaWF0IjoxNzQ1ODIyMTk3LCJleHAiOjE3NDU5MDg1OTd9.zYvjLcVCJOU-CMLFPW80_BzGaHICFlByYjR1dbhyAJc",
+   "user" : {
+      "email" : "user@mlshop.com",
+      "id" : "680f1fb1e00e1855c37ca3c7",
+      "name" : "User1",
+      "role" : "client"
+   }
+}
+
+pepechuy@pepechuy-HVY-WXX9:~$ curl -X POST http://localhost:3000/api/users -H "Content-Type: application/json" -d '{"name":"Test User","email":"test@example.com","password":"password123"}' | json_pp
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   422  100   350  100    72   2718    559 --:--:-- --:--:-- --:--:--  3296
+{
+   "message" : "User created successfully",
+   "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBmMjI1NTRiMzA1OTIyNjgzNjY3ZTUiLCJyb2xlIjoiY2xpZW50IiwiaWF0IjoxNzQ1ODIyMjkzLCJleHAiOjE3NDU5MDg2OTN9.39OAfkWQ-lH6P1usMFGrupbn63WPmpBk6yrnWZUDPYk",
+   "user" : {
+      "email" : "test@example.com",
+      "id" : "680f22554b305922683667e5",
+      "name" : "Test User",
+      "role" : "client"
+   }
+}
+

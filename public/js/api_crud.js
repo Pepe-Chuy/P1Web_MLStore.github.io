@@ -20,9 +20,13 @@ class ProductAPI {
 
     async create(data) {
         try {
+            const token = localStorage.getItem('token');
             const response = await fetch(this.baseURL, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
                 body: JSON.stringify(data),
             });
             if (!response.ok) {
@@ -36,9 +40,13 @@ class ProductAPI {
 
     async update(id, data) {
         try {
+            const token = localStorage.getItem('token');
             const response = await fetch(`${this.baseURL}/${id}`, {
                 method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
                 body: JSON.stringify(data),
             });
             if (!response.ok) {
@@ -52,8 +60,12 @@ class ProductAPI {
 
     async delete(id) {
         try {
+            const token = localStorage.getItem('token');
             const response = await fetch(`${this.baseURL}/${id}`, { 
-                method: 'DELETE' 
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
             });
             if (!response.ok) {
                 throw new Error('Failed to delete product');
@@ -64,6 +76,7 @@ class ProductAPI {
     }
 }
 
-const productAPI = new ProductAPI('https://crudcrud.com/api/c7fe509ccb294227b89047438a26bfec/products');
+
+const productAPI = new ProductAPI('http://localhost:3000/api/products');
 
 export { productAPI };

@@ -1,0 +1,25 @@
+1. Test User Login (Admin)
+
+curl -X POST http://localhost:3000/api/users/login -H "Content-Type: application/json" -d '{"email":"admin@mlshop.com","password":"password123"}' | json_pp
+
+2. Test User Login (Regular User)
+curl -X POST http://localhost:3000/api/users/login -H "Content-Type: application/json" -d '{"email":"user@mlshop.com","password":"password123"}' | json_pp
+
+3. Get All Products
+curl -X GET http://localhost:3000/api/products | json_pp
+
+4. Create a New Product (Admin Only) (Replace TOKEN)
+
+curl -X POST http://localhost:3000/api/products -H "Content-Type: application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlZjY1M2JhOTI0M2VjYWI1NWQ1MDEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDU4MTEwNTIsImV4cCI6MTc0NTg5NzQ1Mn0.nK2ZMkFX3FzK2LLquL8ERfJUV8Wfj6nE8KmLemFxNnU" -d '{"name":"Test Product","description":"Test Description","price":99.99,"stock":10,"category":"Test","image":"https://via.placeholder.com/150"}' | json_pp
+
+5. Get a Product by ID
+
+curl -X GET http://localhost:3000/api/products/680ef653ba9243ecab55d4fb | json_pp
+
+6. Update a Product (Admin Only)
+
+curl -X PUT http://localhost:3000/api/products/680ef6bc646ff3cb1b88a865 -H "Content-Type: application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBlZjY1M2JhOTI0M2VjYWI1NWQ1MDEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDU4MTEwNTIsImV4cCI6MTc0NTg5NzQ1Mn0.nK2ZMkFX3FzK2LLquL8ERfJUV8Wfj6nE8KmLemFxNnU" -d '{"name":"Updated Test Product","description":"Updated Description","price":129.99,"stock":15,"category":"Test"}' | json_pp
+
+7. Test User Registration
+
+curl -X POST http://localhost:3000/api/users -H "Content-Type: application/json" -d '{"name":"Test User","email":"test@example.com","password":"password123"}' | json_pp

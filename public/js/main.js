@@ -95,6 +95,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadPredefinedProducts();
     await loadProducts();
 
+    // Add event listener for the Add Product button
+    const addProductBtn = document.getElementById('add-product-btn');
+    if (addProductBtn) {
+        addProductBtn.addEventListener('click', () => {
+            openProductModal();
+        });
+    }
+
     const saveProductBtn = document.getElementById('save-product-btn');
     if (saveProductBtn) {
         saveProductBtn.addEventListener('click', async () => {
@@ -107,11 +115,32 @@ document.addEventListener('DOMContentLoaded', async () => {
                 return;
             }
 
+            // Get the image URL
+            const image = document.getElementById('product-image')?.value || 'https://via.placeholder.com/150';
+            
+            // Add stock and category fields (required by backend model)
+            const stock = 10; // Default value
+            const category = 'Other'; // Default value
+            
             try {
                 if (window.editingProductId) {
-                    await productAPI.update(window.editingProductId, { name, price, description });
+                    await productAPI.update(window.editingProductId, { 
+                        name, 
+                        price, 
+                        description, 
+                        image,
+                        stock,
+                        category
+                    });
                 } else {
-                    await productAPI.create({ name, price, description });
+                    await productAPI.create({ 
+                        name, 
+                        price, 
+                        description, 
+                        image,
+                        stock,
+                        category
+                    });
                 }
 
                 const modal = bootstrap.Modal.getInstance(document.getElementById('productModal'));
